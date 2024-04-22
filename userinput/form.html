@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+</head>
+<body>
+<form>
+<div>
+<label for="first-name">First name</label>
+<input type="text" name="first-name">
+</div>
+<br>
+<div>
+<label for="last-name">Last name</label>
+<input type="text" name="last-name">
+</div>
+<br>
+<div>
+<label for="JS-difficult">How difficult is JavaScript?</label>
+<select name="JS-difficulty">
+<option>Easy</option>
+<option>Somewhere between</option>
+<option>Hard</option>
+</select>
+<br><br>
+</div>
+<button type="submit">Submit</button>
+</form>
+<script>
+showResult();
+function showResult() {
+const form = document.querySelector('form');
+form.addEventListener('submit', (e) => {
+e.preventDefault(); 
+const formData = new FormData(form); 
+const obj = Object.fromEntries(formData); 
+
+const json = JSON.stringify(obj);
+localStorage.setItem('form', json);
+
+window.location.href = "confirm.html";
+});
+}
+</script>
+  
+</body>
+</html>
